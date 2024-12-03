@@ -1,3 +1,37 @@
+import sys
+from PyQt5.QtWidgets import QApplication, QMainWindow, QLabel
+
+class MainWindow(QMainWindow):
+    def __init__(self):
+        super().__init__()
+        self.setWindowTitle("Geurideu-Haegyeolsa")
+        self.setGeometry(500,250,500,500)
+        
+        label = QLabel("BoilerPlate",self)
+
+def main():
+    app = QApplication(sys.argv)
+    window = MainWindow()
+    window.show()
+    sys.exit(app.exec())
+    
+
+if __name__=="__main__":
+    main()    
+    grid =[[0 for x in range(9)]for y in range(9)]
+    grid =[[3, 0, 6, 5, 0, 8, 4, 0, 0],
+          [5, 2, 0, 0, 0, 0, 0, 0, 0],
+          [0, 8, 7, 0, 0, 0, 0, 3, 1],
+          [0, 0, 3, 0, 1, 0, 0, 8, 0],
+          [9, 0, 0, 8, 6, 3, 0, 0, 5],
+          [0, 5, 0, 0, 9, 0, 6, 0, 0],
+          [1, 3, 0, 0, 0, 0, 2, 5, 0],
+          [0, 0, 0, 0, 0, 0, 0, 7, 4],
+          [0, 0, 5, 2, 0, 6, 3, 0, 0]]
+    sudokuSolver(grid)
+    printGrid(grid)
+
+
 #Test for input validity with respect to row, if for particular row specified
 #by row contains num, then return boolean false, else true.
 def isValidInputRow(arr, row, num) -> bool:
@@ -49,16 +83,4 @@ def printGrid(grid):
     for row in grid:
         print(" ".join(str(num) for num in row))
 
-if __name__=="__main__":
-    grid =[[0 for x in range(9)]for y in range(9)]
-    grid =[[3, 0, 6, 5, 0, 8, 4, 0, 0],
-          [5, 2, 0, 0, 0, 0, 0, 0, 0],
-          [0, 8, 7, 0, 0, 0, 0, 3, 1],
-          [0, 0, 3, 0, 1, 0, 0, 8, 0],
-          [9, 0, 0, 8, 6, 3, 0, 0, 5],
-          [0, 5, 0, 0, 9, 0, 6, 0, 0],
-          [1, 3, 0, 0, 0, 0, 2, 5, 0],
-          [0, 0, 0, 0, 0, 0, 0, 7, 4],
-          [0, 0, 5, 2, 0, 6, 3, 0, 0]]
-    sudokuSolver(grid)
-    printGrid(grid)
+
